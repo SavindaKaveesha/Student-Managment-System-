@@ -1,10 +1,10 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-def create_window():
-    window = tk.Tk()
-    window.title("Student Management System")
-    window.geometry("1024x480")
+def create_window(self, window):
+    self.root = window
+    self.root.title("Student Management System")
+    self.root.geometry("1024x480")
     
     # align center of the window
     screen_width = window.winfo_screenwidth()
@@ -124,83 +124,3 @@ def create_window():
     window.mainloop()
 
 create_window()
-
-def add_student(self):
-        roll_number = self.roll_number_entry.get()
-        name = self.name_entry.get()
-        grade = self.grade_entry.get()
-
-        if not roll_number or not name or not grade:
-            messagebox.showerror("Error", "Please fill in all fields")
-            return
-
-        # Add student to the Treeview
-        self.student_tree.insert("", "end", values=(roll_number, name, grade))
-
-        # Clear input fields
-        self.roll_number_entry.delete(0, tk.END)
-        self.name_entry.delete(0, tk.END)
-        self.grade_entry.delete(0, tk.END)
-
-def view_students(self):
-        # View all students in the Treeview
-        # For demo purposes, let's add some sample data
-        students_data = [
-            ("1", "John Doe", "A"),
-            ("2", "Jane Smith", "B"),
-            ("3", "Bob Johnson", "C")
-        ]
-
-        for student_data in students_data:
-            self.student_tree.insert("", "end", values=student_data)
-
-        def search_student(self):
-            roll_number = self.roll_number_entry.get()
-            if not roll_number:
-                messagebox.showerror("Error", "Please enter Roll Number to search")
-                return
-
-        # Search for the student in the Treeview
-        found = False
-        for item in self.student_tree.get_children():
-            if roll_number == self.student_tree.item(item, "values")[0]:
-                found = True
-                messagebox.showinfo("Student Found", f"Roll Number: {roll_number}\nName: {self.student_tree.item(item, 'values')[1]}\nGrade: {self.student_tree.item(item, 'values')[2]}")
-                break
-
-        if not found:
-            messagebox.showinfo("Student Not Found", f"No student found with Roll Number: {roll_number}")
-
-        def delete_student(self):
-            roll_number = self.roll_number_entry.get()
-            if not roll_number:
-                messagebox.showerror("Error", "Please enter Roll Number to delete")
-                return
-
-        # Delete the student from the Treeview
-        found = False
-        for item in self.student_tree.get_children():
-            if roll_number == self.student_tree.item(item, "values")[0]:
-                found = True
-                self.student_tree.delete(item)
-                break
-
-        if not found:
-            messagebox.showinfo("Student Not Found", f"No student found with Roll Number: {roll_number}")
-
-        def update_student(self):
-            roll_number = self.roll_number_entry.get()
-            name = self.name_entry.get()
-            grade = self.grade_entry.get()
-
-            if not roll_number:
-                messagebox.showerror("Error", "Please enter Roll Number to update")
-                return
-
-            # Update the student in the Treeview
-            found = False
-            for item in self.student_tree.get_children():
-                if roll_number == self.student_tree.item(item, "values")[0]:
-                    found = True
-                    self.student_tree.item(item, values=(roll_number, name, grade))
-               
